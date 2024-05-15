@@ -1,0 +1,23 @@
+.content__inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+.content__top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.search {
+  display: flex;
+  column-gap: 10px;
+  box-shadow: 0 0 1px #000;
+}
+.search button {
+  padding: 5px;
+}
+@media (max-width: 480px) {
+  .short {
+    display: none;
+  }
+}

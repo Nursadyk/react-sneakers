@@ -1,0 +1,50 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+.overlay__inner {
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  background: #fff;
+  width: 500px;
+  min-height: 100vh;
+  padding: 10px;
+}
+.cart {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 1px #000;
+  margin-top: 30px;
+}
+.img__wrapper {
+  max-width: 130px;
+}
+.img__wrapper img {
+  width: 100%;
+}
+.closeCart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+@media (max-width: 570px) {
+  .overlay__inner {
+    width: 100%;
+  }
+  .cart {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .description {
+    display: none;
+  }
+}
