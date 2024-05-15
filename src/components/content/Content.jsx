@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunCk } from "../../Thunck";
 import { fetchData, searchFc } from "../../slices/Menu";
 const Content = () => {
-  const { items, loading, search } = useSelector((s) => s.menu);
+  const { items, search, loading } = useSelector((s) => s.menu);
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(fetchData());
@@ -16,7 +16,7 @@ const Content = () => {
         <h1>
           Все <span className="short">кросовки</span>{" "}
         </h1>
-        {loading && <h2>Loading</h2>}
+        {loading && <h2>loading...</h2>}
         <div className="search">
           <button>
             <span className="material-symbols-outlined">search</span>

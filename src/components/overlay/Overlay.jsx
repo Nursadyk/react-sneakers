@@ -46,6 +46,9 @@ const Overlay = () => {
         >
           <span className="material-symbols-outlined">close</span>
         </button>
+        {cart.length <= 0 ? (
+          <h2 className="text-4xl text-center">Cart empty</h2>
+        ) : null}
         {cart.map((el, index) => (
           <div className="cart" key={el.id}>
             <div className="img__wrapper">
