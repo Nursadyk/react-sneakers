@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { isAddedFc, addToCartAction } from "../../slices/Cart";
 import axios from "axios";
 import ContentLoader from "react-content-loader";
-const Card = ({ image, description, price, count, id, idx }) => {
+const Card = ({ image, description, price, count, id, idx, loading }) => {
   const { cart } = useSelector((s) => s.cart);
-  const { loading } = useSelector((s) => s.menu);
   const dispatch = useDispatch();
   const addToCart = async (obj) => {
     try {
@@ -24,7 +23,7 @@ const Card = ({ image, description, price, count, id, idx }) => {
     return cart.some((el) => Number(el.idx) === Number(id));
   };
   return (
-    <div className="card-wrapper">
+    <>
       {loading ? (
         <ContentLoader
           speed={2}
@@ -88,7 +87,7 @@ const Card = ({ image, description, price, count, id, idx }) => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

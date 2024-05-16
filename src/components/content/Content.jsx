@@ -2,7 +2,6 @@ import React from "react";
 import Card from "../card/Card";
 import "./Content.css";
 import { useDispatch, useSelector } from "react-redux";
-import { thunCk } from "../../Thunck";
 import { fetchData, searchFc } from "../../slices/Menu";
 const Content = () => {
   const { items, search, loading } = useSelector((s) => s.menu);
@@ -10,6 +9,14 @@ const Content = () => {
   React.useEffect(() => {
     dispatch(fetchData());
   }, []);
+  function checkLoading() {
+    const filterItems = items.filter((el) =>
+      el.name.toLowerCase().includes(search.toLowerCase())
+    );
+    return (loading ? [...Array(10)] : filterItems).map((el, idx) => (
+      <Card {...el} idx={idx + 1} key={idx} loading={loading} />
+    ));
+  }
   return (
     <div className="content">
       <div className="content__top">
@@ -28,13 +35,7 @@ const Content = () => {
           />
         </div>
       </div>
-      <div className="content__inner">
-        {items
-          .filter((el) => el.name.toLowerCase().includes(search.toLowerCase()))
-          .map((el, idx) => (
-            <Card {...el} idx={idx + 1} key={el.id} />
-          ))}
-      </div>
+      <div className="content__inner">{checkLoading()}</div>
     </div>
   );
 };
