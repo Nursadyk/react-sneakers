@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { openCartFc } from "../../slices/Menu";
+import { Link } from "react-router-dom";
 const Header = () => {
   const dispatch = useDispatch();
   const { cart } = useSelector((s) => s.cart);
@@ -38,9 +39,9 @@ const Header = () => {
           </p>
           <div className="dot"></div>
         </li>
-        <li>
+        <Link to="/admin">
           <span className="material-symbols-outlined">account_circle</span>
-        </li>
+        </Link>
       </ul>
     </header>
   );
