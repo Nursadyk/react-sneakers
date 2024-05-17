@@ -10,6 +10,10 @@ const Header = () => {
   const openAdmin = () => {
     setIsOpenAdmin((prev) => !prev);
   };
+  const totalPrice = () => {
+    const totalPrice = cart.reduce((acc, item) => acc + Number(item.price), 0);
+    return totalPrice;
+  };
   return (
     <header className="header">
       <div className="header__left">
@@ -39,7 +43,8 @@ const Header = () => {
               cursor: "pointer",
             }}
           >
-            1802 com
+            {totalPrice()}
+            сом
           </p>
           <div className="dot"></div>
         </li>
