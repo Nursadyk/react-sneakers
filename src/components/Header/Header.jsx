@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const dispatch = useDispatch();
   const { cart } = useSelector((s) => s.cart);
+  const [isOpenAdmin, setIsOpenAdmin] = React.useState(false);
+  const openAdmin = () => {
+    setIsOpenAdmin((prev) => !prev);
+  };
   return (
     <header className="header">
       <div className="header__left">
@@ -39,8 +43,14 @@ const Header = () => {
           </p>
           <div className="dot"></div>
         </li>
-        <Link to="/admin">
-          <span className="material-symbols-outlined">account_circle</span>
+        <Link to="/admin" onClick={openAdmin}>
+          {isOpenAdmin ? (
+            <Link to="/">
+              <span class="material-symbols-outlined">arrow_back</span>
+            </Link>
+          ) : (
+            <span className="material-symbols-outlined">account_circle</span>
+          )}
         </Link>
       </ul>
     </header>

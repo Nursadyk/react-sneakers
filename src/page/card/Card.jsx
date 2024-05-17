@@ -7,6 +7,7 @@ const Card = ({ image, description, price, count, id, idx, loading }) => {
   const { cart } = useSelector((s) => s.cart);
   const dispatch = useDispatch();
   const addToCart = async (obj) => {
+    console.log(obj);
     try {
       const { data } = await axios.post(
         `https://6639fa2f1ae792804bed8616.mockapi.io/cart`,
@@ -78,7 +79,7 @@ const Card = ({ image, description, price, count, id, idx, loading }) => {
               <span
                 className="material-symbols-outlined"
                 style={{
-                  color: isItemInCart(id) ? "#fff" : "",
+                  color: isItemInCart(idx) ? "#fff" : "",
                 }}
               >
                 add

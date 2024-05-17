@@ -3,6 +3,7 @@ import axios from "axios";
 
 const initialState = {
   items: [],
+  filteredItems: [],
   loading: false,
   error: "",
   search: "",
@@ -21,8 +22,13 @@ const MenuSlice = createSlice({
     awaitItems(state) {
       state.loading = true;
     },
-    readyItems(state, action) {
+    setItems(state, action) {
       state.items = action.payload;
+      state.filteredItems = action.payload;
+      state.loading = false;
+    },
+    readyItems(state, action) {
+      state.filteredItems = action.payload;
       state.loading = false;
     },
     errorItems(state, action) {
@@ -41,6 +47,7 @@ const MenuSlice = createSlice({
     });
     builder.addCase(fetchData.fulfilled, (state, action) => {
       state.items = action.payload;
+      state.filteredItems = action.payload;
       state.loading = false;
     });
     builder.addCase(fetchData.rejected, (state, action) => {
