@@ -73,7 +73,7 @@ const Card = ({ image, description, price, count, id, idx, loading }) => {
                 addToCart({ image, description, price, id, count, idx })
               }
               style={{
-                background: isItemInCart(id) ? "green" : "",
+                background: isItemInCart(idx) ? "green" : "",
               }}
             >
               <span
